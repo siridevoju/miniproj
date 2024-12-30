@@ -1,0 +1,71 @@
+.Navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Optional: to give a shadow effect */
+}
+
+/* Add some margin to the main content so it doesn't get hidden under the navbar */
+body {
+    padding-top: 60px;
+    /* Adjust based on the height of your navbar */
+}
+
+/* Styling for the FarmOne brand */
+.farmone-brand {
+    color: #10a110 !important;
+    font-weight: 700;
+    font-size: 1.6rem !important;
+    letter-spacing: 0.5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link {
+    color: #413f3f !important;
+    padding: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #000000 !important;
+}
+
+.Navbar .cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.Navbar .cart-icon .cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.2em 0.6em;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+.login-button {
+    background-color: #FFD700 !important;
+    color: #000;
+    border-radius: 30px;
+    padding: 10px 20px !important;
+    border: 2px solid #FFD700;
+    font-weight: bold !important;
+    text-align: center;
+    width: 130px;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #FFA500;
+    color: #fff;
+    border-color: #FFA500;
+    transform: scale(1.1);
+}

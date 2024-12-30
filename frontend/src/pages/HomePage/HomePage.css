@@ -1,0 +1,119 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.title {
+    text-align: center;
+    position: relative;
+    line-height: 60px;
+    color: #555;
+}
+
+.title::after {
+    content: '';
+    background: #ff523b;
+    width: 80px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.test {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* Enable wrapping to the next line */
+    justify-content: space-between;
+    /* Space cards evenly */
+    align-items: center;
+}
+
+.wrapper {
+    perspective: 900px;
+    padding: 20px;
+    flex: 1 1 calc(25% - 40px);
+    /* Each card takes up 25% of the width minus padding */
+    max-width: calc(25% - 40px);
+    /* Limit the max-width to 25% minus padding */
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 40px;
+    /* Space between the rows */
+}
+
+.single-card {
+    height: 450px;
+    position: relative;
+    text-align: center;
+    transition: all 1.5s cubic-bezier(0.7, -.5, 0.3, 1.8);
+    transform-style: preserve-3d;
+}
+
+.wrapper:hover .single-card {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    width: 100%;
+    /* Use full width of the parent */
+    position: relative;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.front {
+    cursor: pointer;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.back {
+    transform: rotateY(180deg);
+    position: absolute;
+    border-radius: 50px;
+    height: 100%;
+    background: white;
+}
+
+.content {
+    padding-top: 25%;
+}
+
+.content h2 {
+    font-size: 35px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.content h4 {
+    margin: 0;
+}
+
+.btn {
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover {
+    background: #563434;
+}

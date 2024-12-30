@@ -1,0 +1,128 @@
+/* Container adjustments */
+.tools-container {
+    margin-top: 80px;
+    padding: 0 20px;
+}
+
+/* Card Styling */
+.tool-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    background: linear-gradient(145deg, #f4f4f4, #fff);
+}
+
+.tool-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Image container */
+.image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: relative;
+    background-color: #e9ecef;
+}
+
+.tool-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover .tool-image {
+    transform: scale(1.1);
+}
+
+/* Tool details styling */
+.tool-name {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.tool-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Pricing Styles */
+.tool-pricing {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* MRP (Original Price) styling */
+.strike-price {
+    font-size: 0.85rem;
+    color: #e74c3c;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+}
+
+/* Discounted Price styling */
+.discount-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+    /* Make discounted price black */
+}
+
+/* Discount Percentage styling */
+.discount-percentage {
+    font-size: 0.85rem;
+    color: #28a745;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+/* Add to Cart button styling */
+.add-to-cart-button {
+    background: linear-gradient(135deg, #28a745, #218838);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 25px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.add-to-cart-button:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tools.css */
+.tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tool-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.delete-icon {
+    font-size: 1.5rem;
+    color: red;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.delete-icon:hover {
+    transform: scale(1.1);
+    /* Slightly increase size on hover */
+}
