@@ -29,11 +29,11 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/central-schemes" element={<CentralSchemes />} />
             <Route path="/state-schemes" element={<StateSchemes />} />
-            <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="/tools" element={<Tools />} />
             <Route path="/support" element={<Support />} />
             <Route path="/tools/:id" element={<ToolDetail />} />
-            <Route path="/add-tool" element={<PrivateRoute adminOnly><AddTool /></PrivateRoute>} />
+            <Route path="/add-tool" element={<AddTool />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>

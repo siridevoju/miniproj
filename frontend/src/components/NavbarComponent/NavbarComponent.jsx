@@ -3,6 +3,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 import './NavbarComponent.css';
 import { CartContext } from '../../context/CartContext.js';
 
@@ -57,6 +58,11 @@ const NavbarComponent = () => {
                                 <Nav.Link onClick={handleLogout} className="login-button">Logout</Nav.Link>
                             ) : (
                                 <Nav.Link href="/login" className="login-button">Login</Nav.Link>
+                            )}
+                            {localStorage.getItem('role') === 'admin' && (
+                                <Nav.Link href="/notifications" className="ms-2 notification-icon">
+                                    <FontAwesomeIcon icon={faBell} size="lg" />
+                                </Nav.Link>
                             )}
                             {location.pathname.startsWith('/tools') && (
                                 <Nav.Link href="/cart" className="ms-3 cart-icon">
