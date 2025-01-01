@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NavbarComponent from '../../components/NavbarComponent/NavbarComponent';
 import './Support.css';
-import { toast, ToastContainer } from 'react-toastify'; 
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ const Support = () => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!(name && email && subject && message)) {
@@ -24,16 +24,19 @@ const Support = () => {
       toast.error('Please enter a valid email address.');
       return;
     }
-    try{
-      await axios.post('http://localhost:5000/api/support',{
-        name:name,
+    try {
+      let res = await axios.post('http://localhost:5000/api/support', {
+        name: name,
         email: email,
-        subject : subject,
-        message : message,
-      },  {headers: {
-        'Authorization': localStorage.getItem('authToken') }
-      // Include the token in the Authorization header
-    });
+        subject: subject,
+        message: message,
+      }, {
+        headers: {
+          'Authorization': localStorage.getItem('authToken')
+        }
+        // Include the token in the Authorization header
+      });
+      console.log(res)
       toast.success("Message Sent");
       setName('');
       setEmail('');
@@ -41,7 +44,8 @@ const Support = () => {
       setMessage('');
     }
     catch (error) {
-        toast.error('Unable to Send');
+      console.log(error)
+      toast.error('Unable to Send');
     }
   };
 

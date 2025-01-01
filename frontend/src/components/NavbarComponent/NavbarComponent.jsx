@@ -6,6 +6,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import './NavbarComponent.css';
 import { CartContext } from '../../context/CartContext.js';
+import NotificationsDropdown from '../NotificationsDropdown/NotificationsDropdown.jsx'
 
 const NavbarComponent = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,7 +50,11 @@ const NavbarComponent = () => {
                                         <NavDropdown.Item href="/state-schemes">State Schemes</NavDropdown.Item>
                                     </NavDropdown>
                                     <Nav.Link href="/tools">Tools</Nav.Link>
-                                    <Nav.Link href="/support">Support</Nav.Link>
+                                    {localStorage.getItem('role') !== 'admin' ?
+                                        <Nav.Link href="/support">Support</Nav.Link> : ''}
+                                    {localStorage.getItem('role') === 'admin' && (
+                                        <NotificationsDropdown />
+                                    )}
                                 </Nav>
                             </div>
                         )}
@@ -59,12 +64,9 @@ const NavbarComponent = () => {
                             ) : (
                                 <Nav.Link href="/login" className="login-button">Login</Nav.Link>
                             )}
-                            {localStorage.getItem('role') === 'admin' && (
-                                <Nav.Link href="/notifications" className="ms-2 notification-icon">
-                                    <FontAwesomeIcon icon={faBell} size="lg" />
-                                </Nav.Link>
-                            )}
-                            {location.pathname.startsWith('/tools') && (
+
+
+                            {localStorage.getItem('role') !== "admin" && location.pathname.startsWith('/tools') && (
                                 <Nav.Link href="/cart" className="ms-3 cart-icon">
                                     <FontAwesomeIcon icon={faCartShopping} size="lg" />
                                     <span className="cart-count">{cartCount}</span>

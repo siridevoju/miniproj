@@ -14,6 +14,7 @@ import { CartProvider } from './context/CartContext';
 import CartPage from './pages/CartPage/CartPage';
 import PrivateRoute from './PrivateRoute';
 import { ToastContainer } from 'react-toastify';
+import MessageDetail from './pages/MessageDetail/MessageDetail';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <NavbarComponent />
           <ToastContainer />
           <Routes>
+            <Route path="/notifications" element={<MessageDetail />} />
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/home" element={<HomePage />} />
@@ -34,6 +36,7 @@ function App() {
             <Route path="/support" element={<Support />} />
             <Route path="/tools/:id" element={<ToolDetail />} />
             <Route path="/add-tool" element={<AddTool />} />
+
           </Routes>
         </BrowserRouter>
       </CartProvider>
