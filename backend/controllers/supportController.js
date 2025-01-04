@@ -38,3 +38,19 @@ exports.getSupportMessageDetails = async (req, res) => {
         res.status(500).send({ message: 'Error fetching message' });
     }
 };
+
+
+exports.deleteSupportMessage = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedMessage = await Support.findByIdAndDelete(id);
+
+        if (!deletedMessage) {
+            return res.status(404).json({ message: 'Message not found' });
+        }
+
+        res.status(200).json({ message: 'Message resolved and deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting message', error });
+    }
+};

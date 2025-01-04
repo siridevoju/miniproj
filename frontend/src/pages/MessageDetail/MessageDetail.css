@@ -38,6 +38,21 @@
     color: #555;
 }
 
+.resolve-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.resolve-button:hover {
+    background-color: #218838;
+}
+
+
 .message-content {
     white-space: pre-line;
     /* Preserve line breaks */
