@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
+
+/* Ensure the dropdown menu stays in its original position */
+.custom-notification-dropdown .dropdown-menu {
+    position: absolute;
+    /* Keep dropdown position unchanged */
+    background-color: rgb(240, 238, 238) !important;
+    /* Remove shadow */
+    border-radius: 4;
+    /* Remove any border radius */
+    border: #666;
+    /* Ensure no border */
+    margin-top: 0;
+    /* Prevent any upward shift */
+    padding: 0;
+    /* Optional: To remove any padding if necessary */
+}
+
+/* Dropdown items */
+.custom-dropdown-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    /* Optional: Keep a border between items */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    /* background-color: transparent !important; */
+    font-family: 'Poppins', sans-serif;
+
+    /* Remove background */
+}
+
+/* Hover effect for items */
+.custom-dropdown-item:hover {
+    background-color: #f9f9f9;
+    /* Subtle highlight on hover */
+    transform: scale(1.02);
+    /* Slight zoom effect on hover */
+}
+
+/* Header and subject text styling */
+.notification-header {
+    font-size: 14px;
+    font-weight: 600;
+    /* Semi-bold for emphasis */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.notification-subject {
+    font-size: 12px;
+    font-weight: 400;
+    /* Regular weight */
+    color: #555;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Loading and empty states */
+.dropdown-loading,
+.dropdown-empty {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    padding: 10px 0;
+    font-style: italic;
+    /* Add a bit of emphasis for empty/loading states */
+}

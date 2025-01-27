@@ -25,6 +25,10 @@ export const CartProvider = ({ children }) => {
     }, [authToken, userId]);
 
     const updateCartQuantity = (toolId, newQuantity) => {
+        if (!toolId) {
+            console.error('Invalid toolId:', toolId);
+            return;
+        }
         axios.put(`http://localhost:5000/api/cart/${userId}/${toolId}`,
             { quantity: newQuantity },
             {

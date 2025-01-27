@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Nav, Tab, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';  // Import Toastify
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-import 'react-toastify/dist/ReactToastify.css'; // Import toastify CSS
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import './LoginPage.css';
 
 function LoginPage() {
@@ -14,9 +14,22 @@ function LoginPage() {
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
 
-    const navigate = useNavigate();  // Create navigate function for redirection
+    const navigate = useNavigate();
 
-    // Handle login
+    // Check if the user is already logged in on page load
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            const decodedToken = JSON.parse(atob(token.split('.')[1]));  // Decode the JWT token
+            const expiryTime = decodedToken.exp * 1000; // Convert expiry time to milliseconds
+            if (expiryTime < Date.now()) {
+                // If the token is expired, clear localStorage and log out
+                localStorage.clear();
+                toast.error('Session expired. Please log in again.');
+            }
+        }
+    }, []);
+
     // Handle login
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -33,31 +46,28 @@ function LoginPage() {
             });
 
             const authToken = data.token;
-            const userId = data.userId;  // Assuming the backend returns userId in the response
-            const role = data.message.includes('Admin') ? 'admin' : 'user';  // Set role based on response message
+            const userId = data.userId;
+            const role = data.message.includes('Admin') ? 'admin' : 'user';
 
+            // Store token and role with expiry time in localStorage
             localStorage.setItem('authToken', authToken);
-            localStorage.setItem('userId', userId);  // Store userId in localStorage
-            localStorage.setItem('role', role);  // Store role in localStorage
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('role', role);
+            localStorage.setItem('expiry', Date.now() + 3600000);  // Store expiry time (1 hour)
 
             toast.success(`${data.message}! Redirecting...`);
             setTimeout(() => {
                 navigate('/');  // Redirect to the home page
             }, 2000);
-
         } catch (error) {
             toast.error('Incorrect email or password');
         }
     };
 
-
-
-
     // Handle registration
     const handleRegister = async (e) => {
         e.preventDefault();
 
-        // Validate fields
         if (!registerUsername || !registerEmail || !registerPassword) {
             toast.error('Please fill in all registration fields');
             return;
@@ -69,12 +79,13 @@ function LoginPage() {
                 email: registerEmail,
                 password: registerPassword,
             });
-            toast.success('Registration successful!');  // Show success toast
+
+            toast.success('Registration successful!');
             setTimeout(() => {
-                setKey('login');  // Switch to the login form after successful registration
+                setKey('login');
             }, 2000);
         } catch (error) {
-            toast.error('Registration failed');  // Show error toast
+            toast.error('Registration failed');
         }
     };
 
@@ -82,7 +93,7 @@ function LoginPage() {
         <div className="login-page">
             <div className="overlay"></div>
             <Container className="form-container">
-                <ToastContainer /> {/* Toast Container for displaying notifications */}
+                <ToastContainer />
                 <Tab.Container activeKey={key} onSelect={(k) => setKey(k)}>
                     <Nav variant="pills" className="justify-content-center mb-3">
                         <Nav.Item>
