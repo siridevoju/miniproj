@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import FooterComponent from '../../components/FooterComponent/FooterComponent';
 import { CartContext } from '../../context/CartContext';
+import NavbarComponent from '../../components/NavbarComponent/NavbarComponent';
 
 const ToolDetail = () => {
     const { state } = useLocation();
@@ -18,6 +19,7 @@ const ToolDetail = () => {
 
     return (
         <div>
+            <NavbarComponent />
             <div className="container mt-4 mb-5">
                 <Row>
                     <Col md={6}>

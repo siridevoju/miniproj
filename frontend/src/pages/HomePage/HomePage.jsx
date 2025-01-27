@@ -7,6 +7,7 @@ const HomePage = () => {
     return (
         <div>
             <NavbarComponent />
+
             <h2 className="title">Modern Tools</h2>
             <div className="test">
                 <div className="wrapper">

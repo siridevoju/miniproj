@@ -22,6 +22,9 @@ exports.deleteProduct = async (req, res) => {
 exports.addToCart = async (req, res) => {
     const { userId } = req.params;
     const { toolId, quantity } = req.body;
+    if (!toolId) {
+        return res.status(400).json({ message: 'Tool ID is required' });
+    }
 
     try {
         const user = await User.findById(userId);
@@ -52,8 +55,10 @@ exports.getCart = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
+        const validCart = user.cart.filter(item => item.toolId);
 
-        res.status(200).json(user.cart); // Return the cart
+        res.status(200).json(validCart);
+        // res.status(200).json(user.cart); // Return the cart
     } catch (error) {
         res.status(500).json({ message: 'Failed to retrieve cart', error });
     }

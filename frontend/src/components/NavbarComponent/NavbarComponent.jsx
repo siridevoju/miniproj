@@ -62,7 +62,7 @@ const NavbarComponent = () => {
                             {isLoggedIn ? (
                                 <Nav.Link onClick={handleLogout} className="login-button">Logout</Nav.Link>
                             ) : (
-                                <Nav.Link href="/login" className="login-button">Login</Nav.Link>
+                                <Nav.Link href="/login" className="login-button border-gray-2">Login</Nav.Link>
                             )}
 
 

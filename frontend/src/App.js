@@ -16,15 +16,18 @@ import PrivateRoute from './PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import MessageDetail from './pages/MessageDetail/MessageDetail';
 import 'react-toastify/dist/ReactToastify.css';
+import VideoMeetComponent from './pages/VideoMeetComponent/VideoMeetComponent';
+import NotificationsDropdown from './components/NotificationsDropdown/NotificationsDropdown';
 
 function App() {
   return (
     <div className="App">
       <CartProvider>
         <BrowserRouter>
-          <NavbarComponent />
+          {/* <NavbarComponent /> */}
           <ToastContainer />
           <Routes>
+            <Route path='/dropdown' element={<NotificationsDropdown />} />
             <Route path="/notifications" element={<MessageDetail />} />
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<LoginPage />} />
@@ -36,6 +39,7 @@ function App() {
             <Route path="/support" element={<Support />} />
             <Route path="/tools/:id" element={<ToolDetail />} />
             <Route path="/add-tool" element={<AddTool />} />
+            <Route path='/meet/:url' element={<VideoMeetComponent />} />
 
           </Routes>
         </BrowserRouter>

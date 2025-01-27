@@ -48,7 +48,6 @@ const MessageDetail = () => {
                     setLoading(false);
                 }
             };
-
             fetchMessage();
         } else {
             setLoading(false);
