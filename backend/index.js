@@ -15,7 +15,7 @@ const io = connectToSocket(server);
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/mini_proj1', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB is connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
